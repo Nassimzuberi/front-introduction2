@@ -49,8 +49,9 @@ var cartes = document.getElementsByClassName("game")[0]
 var winpanel = document.getElementsByClassName("winpanel")[0]
 var array = []
 var game = [];
+var progressbar
 var pairFound = 0;
-var time = 60000;
+var time = 90000;
 var level = 1
 
 // AU CLIQUE DU BOUTON LA PARTIE COMMENCE
@@ -69,7 +70,7 @@ btnHard.onclick = () => {
     btnHard.classList.add("hard-active");
     btnEasy.classList.remove("easy-active");
     level = 2;
-    time = 90000;
+    time = 120000;
 }
 // Pour choisir la difficulté easy
 
@@ -77,7 +78,7 @@ btnEasy.onclick = () => {
     btnEasy.classList.add("easy-active");
     btnHard.classList.remove("hard-active");
     level = 1;
-    time = 60000;
+    time = 90000;
 }
 // Au clique de la carte, elle s'affiche
 function initialisation () {
@@ -126,7 +127,8 @@ function initialisation () {
                         } else {
                             pairFound += 1 ;
                             console.log(pairFound)
-                            pairFound == 14 ? win() : false ;
+                            max = level == 1 ? 28 : 34
+                            pairFound == max ? win() : false ;
                         }
 
                         // Vide le tableau
@@ -148,13 +150,13 @@ function initialisation () {
     function progress(time) {
         var timer = document.getElementsByClassName("progress-bar")[0].children[0]
         var width = 0
-        var progress = setInterval(() => {
+        progressbar = setInterval(() => {
             width += 100/(time/100) ;
             timer.style.width = width + "%";
             width > 50 ? timer.style.background = "orange" : "";
             width > 75 ? timer.style.background = "red" : "";
             if( width > 100) {
-                clearInterval(progress);
+                clearInterval(progressbar);
                 lose();
             }},100)
 
@@ -172,6 +174,7 @@ function lose () {
 }
 
 function win() {
+    clearTimeout(progressbar)
     winpanel.innerHTML = "Bravo tu as gagné"
         show(winpanel)
     setTimeout(() => {
