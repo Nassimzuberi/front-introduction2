@@ -127,7 +127,7 @@ function initialisation () {
                         } else {
                             pairFound += 1 ;
                             console.log(pairFound)
-                            max = level == 1 ? 28 : 34
+                            max = level == 1 ? 28/2 : 34/2;
                             pairFound == max ? win() : false ;
                         }
 
@@ -175,14 +175,14 @@ function lose () {
 
 function win() {
     clearTimeout(progressbar)
-    winpanel.innerHTML = "Bravo tu as gagné"
+    winpanel.innerHTML = "Bravo tu as gagné, Va te reposer maintenant"
         show(winpanel)
     setTimeout(() => {
         hide(winpanel)
         show(menu)
         hide(cartes)
         reset()
-    },2000)
+    },4000)
 
 }
 
