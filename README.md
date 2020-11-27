@@ -1,4 +1,6 @@
 # front-introduction2
 
-Teser le jeu :
+Devine le nombre !
+
+Tester le jeu :
 https://nassimzuberi.github.io/front-introduction2/
