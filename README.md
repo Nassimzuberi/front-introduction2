@@ -1,6 +1,6 @@
-# front-introduction2
+# Memory
 
-Devine le nombre !
+Trouve toutes les paires de fruits
 
 Tester le jeu :
 https://nassimzuberi.github.io/front-introduction2/
